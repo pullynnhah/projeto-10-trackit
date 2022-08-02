@@ -1,13 +1,15 @@
 import {useState} from "react";
-import {GlobalStyle} from "./commons/GlobalStyle";
-import Context from "./Context";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {GlobalStyle} from "./commons/GlobalStyle";
+
+import Context from "./Context";
 import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
+import HabitsPage from "./pages/HabitsPage";
 
 export default function App() {
   const [login, setLogin] = useState(null);
-
+  const [percentage, setPercentage] = useState(66);
   const theme = {
     darkBlue: "#126ba5",
     blue: "#52b6ff",
@@ -21,11 +23,12 @@ export default function App() {
   return (
     <>
       <GlobalStyle />
-      <Context.Provider value={{login, setLogin, theme}}>
+      <Context.Provider value={{login, setLogin, percentage, setPercentage, theme}}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/cadastro" element={<SignUpPage />} />
+            <Route path="/habits" element={<HabitsPage />} />
           </Routes>
         </BrowserRouter>
       </Context.Provider>
