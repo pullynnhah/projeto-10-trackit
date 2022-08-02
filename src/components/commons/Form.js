@@ -22,27 +22,27 @@ const Form = styled.div`
     font-size: 20px;
     line-height: 25px;
 
-    color: var(--dark-gray);
-    border: 1px solid var(--border-gray);
+    color: ${props => props.theme.textGray};
+    border: 1px solid ${props => props.theme.borderGray};
     border-radius: 5px;
 
     padding-left: 11px;
   }
 
   input:disabled {
-    background: var(--light-gray);
+    background: ${props => props.theme.backgroundGray};
   }
 
   input::placeholder {
-    color: var(--gray);
+    color: ${props => props.theme.gray};
   }
 
   button {
     width: 80vw;
     height: 45px;
 
-    background: var(--blue);
-    color: var(--white);
+    background: ${props => props.theme.blue};
+    color: ${props => props.theme.white};
 
     display: flex;
     justify-content: center;
@@ -54,7 +54,7 @@ const Form = styled.div`
   .link {
     font-size: 14px;
     line-height: 17px;
-    color: var(--blue);
+    color: ${props => props.theme.blue};
     text-decoration: underline;
   }
 `;

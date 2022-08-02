@@ -11,7 +11,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const {setLogin} = useContext(Context);
+  const {setLogin, theme} = useContext(Context);
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -31,7 +31,7 @@ export default function Login() {
   }
 
   return (
-    <Form>
+    <Form theme={theme}>
       <form onSubmit={handleSubmit}>
         <input
           type="email"

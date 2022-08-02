@@ -84,15 +84,4 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-family: "Lexend Deca", sans-serif;
   }
-
-  :root {
-    --dark-blue: #126ba5;
-    --blue: #52b6ff;
-
-    --border-gray: #d4d4d4;
-    --background-gray: #f2f2f2;
-    --text-gray: #666;
-    --gray: #dbdbdb;
-    --white: #fff;
-  }
 `;
