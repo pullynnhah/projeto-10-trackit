@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 
 export default function App() {
   const [login, setLogin] = useState(null);
+
   const theme = {
     darkBlue: "#126ba5",
     blue: "#52b6ff",
@@ -15,6 +16,7 @@ export default function App() {
     gray: "#dbdbdb",
     white: "#fff",
   };
+
   return (
     <>
       <GlobalStyle />
