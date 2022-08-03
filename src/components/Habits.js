@@ -38,8 +38,8 @@ export default function Habits({habits}) {
     </NoHabit>
   ) : (
     <HabitsWrapper theme={theme}>
-      {habits.map(habit => (
-        <Habit habit={habit} />
+      {habits.map((habit, index) => (
+        <Habit habit={habit} key={index} />
       ))}
     </HabitsWrapper>
   );
