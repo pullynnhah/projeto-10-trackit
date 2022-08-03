@@ -60,7 +60,7 @@ export default function Login() {
         ))}
 
         <button type="submit" disabled={disabled}>
-          {disabled ? <ThreeDots color="#FFF" height={20} width={50} /> : "Entrar"}
+          {disabled ? <ThreeDots color="#fff" height={20} width={50} /> : "Entrar"}
         </button>
       </form>
       <Link to="/cadastro" className="link">

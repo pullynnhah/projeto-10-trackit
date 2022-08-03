@@ -29,6 +29,9 @@ const Form = styled.div`
     border-radius: 5px;
   }
 
+  button:disabled {
+    opacity: 0.7;
+  }
   .link {
     font-size: 14px;
     line-height: 17px;

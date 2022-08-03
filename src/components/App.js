@@ -12,6 +12,7 @@ export default function App() {
   const theme = {
     darkBlue: "#126ba5",
     blue: "#52b6ff",
+
     borderGray: "#d4d4d4",
     backgroundGray: "#f2f2f2",
     textGray: "#666",

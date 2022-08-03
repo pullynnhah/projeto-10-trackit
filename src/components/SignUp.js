@@ -6,6 +6,7 @@ import {postSignUp} from "../services/api";
 
 import Form from "./commons/Form";
 import Context from "./Context";
+import Input from "./commons/Input";
 
 export default function SignUp() {
   const [disabled, setDisabled] = useState(false);
@@ -56,7 +57,7 @@ export default function SignUp() {
     <Form theme={theme}>
       <form onSubmit={handleSubmit}>
         {inputs.map(({type, value, placeholder}, index) => (
-          <input
+          <Input
             theme={theme}
             type={type}
             value={form[value]}
@@ -68,7 +69,7 @@ export default function SignUp() {
         ))}
 
         <button type="submit" disabled={disabled}>
-          {disabled ? <ThreeDots color="#FFF" height={20} width={50} /> : "Cadastrar"}
+          {disabled ? <ThreeDots color="#fff" height={20} width={50} /> : "Cadastrar"}
         </button>
       </form>
       <Link to="/" className="link">
