@@ -1,12 +1,12 @@
 import Page from "../commons/Page";
 import styled from "styled-components";
 import {useContext, useEffect, useState} from "react";
-import GlobalContext from "../GlobalContext";
+import GlobalContext from "../contexts/GlobalContext";
 import HabitForm from "../forms/HabitForm";
 import Habits from "../Habits";
 import {getHabits} from "../../services/api";
 import {Hearts} from "react-loader-spinner";
-import HabitsContext from "../HabitsContext";
+import HabitsContext from "../contexts/HabitsContext";
 
 export default function HabitsPage() {
   const [showForm, setShowForm] = useState(false); // TODO: set to false

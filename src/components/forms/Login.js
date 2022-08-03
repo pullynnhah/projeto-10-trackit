@@ -3,7 +3,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {ThreeDots} from "react-loader-spinner";
 
 import Form from "../commons/Form";
-import GlobalContext from "../GlobalContext";
+import GlobalContext from "../contexts/GlobalContext";
 import {postLogin} from "../../services/api";
 import Input from "../commons/Input";
 

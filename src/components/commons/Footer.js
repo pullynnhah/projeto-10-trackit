@@ -4,7 +4,7 @@ import {CircularProgressbar} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 import styled from "styled-components";
-import GlobalContext from "../GlobalContext";
+import GlobalContext from "../contexts/GlobalContext";
 import {Link} from "react-router-dom";
 
 export default function Footer() {

@@ -5,7 +5,7 @@ import {ThreeDots} from "react-loader-spinner";
 import {postSignUp} from "../../services/api";
 
 import Form from "../commons/Form";
-import GlobalContext from "../GlobalContext";
+import GlobalContext from "../contexts/GlobalContext";
 import Input from "../commons/Input";
 
 export default function SignUp() {

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import logo from "../../assets/images/logo.png";
 import {useContext} from "react";
-import GlobalContext from "../GlobalContext";
+import GlobalContext from "../contexts/GlobalContext";
 
 export default function Logo() {
   const {theme} = useContext(GlobalContext);

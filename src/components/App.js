@@ -2,7 +2,7 @@ import {useState} from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {GlobalStyle} from "./commons/GlobalStyle";
 
-import GlobalContext from "./GlobalContext";
+import GlobalContext from "./contexts/GlobalContext";
 import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
 import HabitsPage from "./pages/HabitsPage";

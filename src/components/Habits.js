@@ -1,12 +1,12 @@
 import {useContext} from "react";
-import GlobalContext from "./GlobalContext";
+import GlobalContext from "./contexts/GlobalContext";
 import styled from "styled-components";
 import DayBtn from "./commons/DayBtn";
 import {BsTrash} from "react-icons/bs";
 
 import {IconContext} from "react-icons";
 import {deleteHabits, getHabits} from "../services/api";
-import HabitsContext from "./HabitsContext";
+import HabitsContext from "./contexts/HabitsContext";
 
 function Habit({habit}) {
   const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];

@@ -1,7 +1,7 @@
 import {useContext} from "react";
 
 import styled from "styled-components";
-import GlobalContext from "../GlobalContext";
+import GlobalContext from "../contexts/GlobalContext";
 
 export default function Header() {
   const {login, theme} = useContext(GlobalContext);

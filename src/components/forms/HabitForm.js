@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import {useContext, useState} from "react";
-import GlobalContext from "../GlobalContext";
+import GlobalContext from "../contexts/GlobalContext";
 import Input from "../commons/Input";
 import {getHabits, postHabit} from "../../services/api";
 import {ThreeDots} from "react-loader-spinner";
 import DayBtn from "../commons/DayBtn";
-import HabitsContext from "../HabitsContext";
+import HabitsContext from "../contexts/HabitsContext";
 
 export default function HabitForm() {
   const [disabled, setDisabled] = useState(false);
