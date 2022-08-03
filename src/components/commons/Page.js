@@ -2,10 +2,10 @@ import styled from "styled-components";
 import Header from "./Header";
 import Footer from "./Footer";
 import {useContext} from "react";
-import Context from "../Context";
+import GlobalContext from "../GlobalContext";
 
 export default function Page({children}) {
-  const {theme} = useContext(Context);
+  const {theme} = useContext(GlobalContext);
   return (
     <>
       <Header />

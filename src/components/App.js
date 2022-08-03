@@ -2,7 +2,7 @@ import {useState} from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {GlobalStyle} from "./commons/GlobalStyle";
 
-import Context from "./Context";
+import GlobalContext from "./GlobalContext";
 import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
 import HabitsPage from "./pages/HabitsPage";
@@ -24,7 +24,7 @@ export default function App() {
   return (
     <>
       <GlobalStyle />
-      <Context.Provider value={{login, setLogin, percentage, setPercentage, theme}}>
+      <GlobalContext.Provider value={{login, setLogin, percentage, setPercentage, theme}}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -32,7 +32,7 @@ export default function App() {
             <Route path="habitos" element={<HabitsPage />} />
           </Routes>
         </BrowserRouter>
-      </Context.Provider>
+      </GlobalContext.Provider>
     </>
   );
 }

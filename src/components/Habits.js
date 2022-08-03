@@ -1,21 +1,32 @@
 import {useContext} from "react";
-import Context from "./Context";
+import GlobalContext from "./GlobalContext";
 import styled from "styled-components";
 import DayBtn from "./commons/DayBtn";
 import {BsTrash} from "react-icons/bs";
 
 import {IconContext} from "react-icons";
+import {deleteHabits, getHabits} from "../services/api";
+import HabitsContext from "./HabitsContext";
 
 function Habit({habit}) {
   const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
-  const {theme} = useContext(Context);
-
+  const {login, theme} = useContext(GlobalContext);
+  const {setHabits} = useContext(HabitsContext);
+  function delHabit(id) {
+    if (window.confirm("Deseja mesmo remover o hábito?")) {
+      const promise = deleteHabits(id, login.token);
+      promise.then(response => {
+        const prom = getHabits(login.token);
+        prom.then(response => setHabits(response.data));
+      });
+    }
+  }
   return (
     <HabitWrapper theme={theme}>
       <div className="habit">
         <p>{habit.name}</p>
         <IconContext.Provider value={{color: "#666", size: "15px"}}>
-          <BsTrash />
+          <BsTrash onClick={() => delHabit(habit.id)} />
         </IconContext.Provider>
       </div>
       <div className="weekdays-btns">
@@ -29,9 +40,9 @@ function Habit({habit}) {
   );
 }
 
-export default function Habits({habits}) {
-  const {theme} = useContext(Context);
-
+export default function Habits() {
+  const {theme} = useContext(GlobalContext);
+  const {habits} = useContext(HabitsContext);
   return habits.length === 0 ? (
     <NoHabit theme={theme}>
       Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!

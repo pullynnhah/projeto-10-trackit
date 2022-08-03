@@ -4,11 +4,11 @@ import {CircularProgressbar} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 import styled from "styled-components";
-import Context from "../Context";
+import GlobalContext from "../GlobalContext";
 import {Link} from "react-router-dom";
 
 export default function Footer() {
-  const {percentage, theme} = useContext(Context);
+  const {percentage, theme} = useContext(GlobalContext);
 
   return (
     <Footing theme={theme}>

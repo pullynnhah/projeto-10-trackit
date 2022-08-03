@@ -5,7 +5,7 @@ import {ThreeDots} from "react-loader-spinner";
 import {postSignUp} from "../../services/api";
 
 import Form from "../commons/Form";
-import Context from "../Context";
+import GlobalContext from "../GlobalContext";
 import Input from "../commons/Input";
 
 export default function SignUp() {
@@ -13,7 +13,7 @@ export default function SignUp() {
   const [form, setForm] = useState({email: "", password: "", name: "", image: ""});
 
   const navigate = useNavigate();
-  const {theme} = useContext(Context);
+  const {theme} = useContext(GlobalContext);
 
   const inputs = [
     {

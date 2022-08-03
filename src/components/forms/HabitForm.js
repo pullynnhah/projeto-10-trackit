@@ -1,17 +1,18 @@
 import styled from "styled-components";
 import {useContext, useState} from "react";
-import Context from "../Context";
+import GlobalContext from "../GlobalContext";
 import Input from "../commons/Input";
 import {getHabits, postHabit} from "../../services/api";
 import {ThreeDots} from "react-loader-spinner";
 import DayBtn from "../commons/DayBtn";
+import HabitsContext from "../HabitsContext";
 
-export default function HabitForm({habit, setHabit, setHabits, days, setDays, setShowForm}) {
+export default function HabitForm() {
   const [disabled, setDisabled] = useState(false);
   const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
-  const {theme} = useContext(Context);
+  const {theme, login} = useContext(GlobalContext);
 
-  const {login} = useContext(Context);
+  const {days, setDays, habit, setHabit, setHabits, setShowForm} = useContext(HabitsContext);
 
   function click(e, index) {
     e.preventDefault();

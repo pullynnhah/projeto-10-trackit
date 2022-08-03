@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 import logo from "../../assets/images/logo.png";
 import {useContext} from "react";
-import Context from "../Context";
+import GlobalContext from "../GlobalContext";
 
 export default function Logo() {
-  const {theme} = useContext(Context);
+  const {theme} = useContext(GlobalContext);
 
   return (
     <LogoContainer theme={theme}>

@@ -1,11 +1,12 @@
 import Page from "../commons/Page";
 import styled from "styled-components";
 import {useContext, useEffect, useState} from "react";
-import Context from "../Context";
+import GlobalContext from "../GlobalContext";
 import HabitForm from "../forms/HabitForm";
 import Habits from "../Habits";
 import {getHabits} from "../../services/api";
 import {Hearts} from "react-loader-spinner";
+import HabitsContext from "../HabitsContext";
 
 export default function HabitsPage() {
   const [showForm, setShowForm] = useState(false); // TODO: set to false
@@ -13,14 +14,14 @@ export default function HabitsPage() {
   const [days, setDays] = useState(new Set());
   const [habits, setHabits] = useState(null);
 
-  const {login} = useContext(Context);
+  const {login} = useContext(GlobalContext);
 
   useEffect(() => {
     const promise = getHabits(login.token);
     promise.catch(error => console.log(error));
     promise.then(response => setHabits(response.data));
   }, [login.token]);
-  const {theme} = useContext(Context);
+  const {theme} = useContext(GlobalContext);
 
   if (habits === null) {
     return (
@@ -33,25 +34,17 @@ export default function HabitsPage() {
   }
 
   return (
-    <Page>
-      <Title theme={theme}>
-        <h3>Meus hábitos</h3>
-        <button onClick={() => setShowForm(true)}>+</button>
-      </Title>
-      {showForm ? (
-        <HabitForm
-          setShowForm={setShowForm}
-          habit={habit}
-          setHabit={setHabit}
-          setHabits={setHabits}
-          days={days}
-          setDays={setDays}
-        />
-      ) : (
-        ""
-      )}
-      <Habits habits={habits} />
-    </Page>
+    <HabitsContext.Provider
+      value={{days, setDays, habit, setHabit, habits, setHabits, setShowForm}}>
+      <Page>
+        <Title theme={theme}>
+          <h3>Meus hábitos</h3>
+          <button onClick={() => setShowForm(true)}>+</button>
+        </Title>
+        {showForm ? <HabitForm /> : ""}
+        <Habits habits={habits} />
+      </Page>
+    </HabitsContext.Provider>
   );
 }
 

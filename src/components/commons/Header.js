@@ -1,10 +1,10 @@
 import {useContext} from "react";
 
 import styled from "styled-components";
-import Context from "../Context";
+import GlobalContext from "../GlobalContext";
 
 export default function Header() {
-  const {login, theme} = useContext(Context);
+  const {login, theme} = useContext(GlobalContext);
   return (
     <Heading theme={theme}>
       <h2>TrackIt</h2>

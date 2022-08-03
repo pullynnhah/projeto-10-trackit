@@ -3,7 +3,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {ThreeDots} from "react-loader-spinner";
 
 import Form from "../commons/Form";
-import Context from "../Context";
+import GlobalContext from "../GlobalContext";
 import {postLogin} from "../../services/api";
 import Input from "../commons/Input";
 
@@ -11,7 +11,7 @@ export default function Login() {
   const [disabled, setDisabled] = useState(false);
   const [form, setForm] = useState({email: "", password: ""});
 
-  const {setLogin, theme} = useContext(Context);
+  const {setLogin, theme} = useContext(GlobalContext);
   const navigate = useNavigate();
 
   function handleSubmit(e) {
