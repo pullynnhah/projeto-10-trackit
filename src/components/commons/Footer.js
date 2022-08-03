@@ -17,14 +17,14 @@ export default function Footer() {
         <div>
           <CircularProgressbar
             value={percentage}
-            text="Hoje"
+            text={"Hoje"}
             background
             backgroundPadding={6}
             styles={buildStyles({
               backgroundColor: "#52b6ff",
               textSize: "18px",
-              textColor: "#FFF",
-              pathColor: "#FFF",
+              textColor: "#fff",
+              pathColor: "#fff",
               strokeLinecap: "round",
             })}
           />
@@ -60,5 +60,9 @@ const Footing = styled.footer`
     width: 91px;
     height: 91px;
     margin-top: -31px;
+  }
+
+  .CircularProgressbar-text {
+    transform: translate(-20px, 5px);
   }
 `;

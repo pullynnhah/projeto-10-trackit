@@ -1,8 +1,10 @@
-import {ThreeDots} from "react-loader-spinner";
-import {Link, useNavigate} from "react-router-dom";
-import Form from "./commons/Form";
 import {useContext, useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {ThreeDots} from "react-loader-spinner";
+
 import {postSignUp} from "../services/api";
+
+import Form from "./commons/Form";
 import Context from "./Context";
 
 export default function SignUp() {
@@ -55,6 +57,7 @@ export default function SignUp() {
       <form onSubmit={handleSubmit}>
         {inputs.map(({type, value, placeholder}, index) => (
           <input
+            theme={theme}
             type={type}
             value={form[value]}
             onChange={e => setForm({...form, [value]: e.target.value})}

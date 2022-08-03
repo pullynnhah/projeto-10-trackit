@@ -14,11 +14,11 @@ function postHabit(data, auth) {
   return axios.post(`${URI}/habits`, data, {header: auth});
 }
 
-function getHabit(auth) {
+function getHabits(auth) {
   return axios.get(`${URI}/habits`, {header: auth});
 }
 
-function deleteHabit(id, auth) {
+function deleteHabits(id, auth) {
   return axios.delete(`${URI}/habits/${id}`, {header: auth});
 }
 
@@ -38,8 +38,8 @@ export {
   postLogin,
   postSignUp,
   postHabit,
-  getHabit,
-  deleteHabit,
+  getHabits,
+  deleteHabits,
   postCheckHabit,
   postUncheckHabit,
   getHistory,

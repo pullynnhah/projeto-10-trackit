@@ -5,6 +5,7 @@ import {ThreeDots} from "react-loader-spinner";
 import Form from "./commons/Form";
 import Context from "./Context";
 import {postLogin} from "../services/api";
+import Input from "./commons/Input";
 
 export default function Login() {
   const [disabled, setDisabled] = useState(false);
@@ -23,7 +24,7 @@ export default function Login() {
 
     promise.then(response => {
       setLogin(response.data);
-      navigate("/habits"); // TODO: mudar pra /hoje
+      navigate("/hoje");
     });
 
     setDisabled(true);
@@ -46,7 +47,8 @@ export default function Login() {
     <Form theme={theme}>
       <form onSubmit={handleSubmit}>
         {inputs.map(({type, value, placeholder}, index) => (
-          <input
+          <Input
+            theme={theme}
             key={index}
             type={type}
             value={form[value]}

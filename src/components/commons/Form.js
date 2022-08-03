@@ -15,28 +15,6 @@ const Form = styled.div`
     margin-bottom: 25px;
   }
 
-  input {
-    width: 80vw;
-    height: 45px;
-
-    font-size: 20px;
-    line-height: 25px;
-
-    color: ${props => props.theme.textGray};
-    border: 1px solid ${props => props.theme.borderGray};
-    border-radius: 5px;
-
-    padding-left: 11px;
-  }
-
-  input:disabled {
-    background: ${props => props.theme.backgroundGray};
-  }
-
-  input::placeholder {
-    color: ${props => props.theme.gray};
-  }
-
   button {
     width: 80vw;
     height: 45px;
