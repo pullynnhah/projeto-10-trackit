@@ -2,10 +2,10 @@ import {useState, useContext} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {ThreeDots} from "react-loader-spinner";
 
-import Form from "./commons/Form";
-import Context from "./Context";
-import {postLogin} from "../services/api";
-import Input from "./commons/Input";
+import Form from "../commons/Form";
+import Context from "../Context";
+import {postLogin} from "../../services/api";
+import Input from "../commons/Input";
 
 export default function Login() {
   const [disabled, setDisabled] = useState(false);
@@ -24,7 +24,7 @@ export default function Login() {
 
     promise.then(response => {
       setLogin(response.data);
-      navigate("/hoje");
+      navigate("/habitos"); // TODO: change to /hoje
     });
 
     setDisabled(true);

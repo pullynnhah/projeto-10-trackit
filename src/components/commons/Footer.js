@@ -1,6 +1,8 @@
 import {useContext} from "react";
 import {buildStyles} from "react-circular-progressbar";
 import {CircularProgressbar} from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+
 import styled from "styled-components";
 import Context from "../Context";
 import {Link} from "react-router-dom";
@@ -26,6 +28,7 @@ export default function Footer() {
               textColor: "#fff",
               pathColor: "#fff",
               strokeLinecap: "round",
+              trailColor: "transparent",
             })}
           />
         </div>
@@ -60,9 +63,5 @@ const Footing = styled.footer`
     width: 91px;
     height: 91px;
     margin-top: -31px;
-  }
-
-  .CircularProgressbar-text {
-    transform: translate(-20px, 5px);
   }
 `;

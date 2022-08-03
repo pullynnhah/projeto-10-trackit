@@ -27,11 +27,12 @@ const Form = styled.div`
     align-items: center;
 
     border-radius: 5px;
+
+    &:disabled {
+      opacity: 0.7;
+    }
   }
 
-  button:disabled {
-    opacity: 0.7;
-  }
   .link {
     font-size: 14px;
     line-height: 17px;

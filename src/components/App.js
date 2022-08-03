@@ -5,6 +5,7 @@ import {GlobalStyle} from "./commons/GlobalStyle";
 import Context from "./Context";
 import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
+import HabitsPage from "./pages/HabitsPage";
 
 export default function App() {
   const [login, setLogin] = useState(null);
@@ -28,6 +29,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/cadastro" element={<SignUpPage />} />
+            <Route path="habitos" element={<HabitsPage />} />
           </Routes>
         </BrowserRouter>
       </Context.Provider>

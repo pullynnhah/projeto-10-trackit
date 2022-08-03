@@ -1,5 +1,5 @@
 import Logo from "../commons/Logo";
-import Login from "../Login";
+import Login from "../forms/Login";
 
 export default function HomePage() {
   return (

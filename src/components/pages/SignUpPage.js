@@ -1,5 +1,5 @@
 import Logo from "../commons/Logo";
-import SignUp from "../SignUp";
+import SignUp from "../forms/SignUp";
 
 export default function SignUpPage() {
   return (

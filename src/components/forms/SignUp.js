@@ -2,11 +2,11 @@ import {useContext, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {ThreeDots} from "react-loader-spinner";
 
-import {postSignUp} from "../services/api";
+import {postSignUp} from "../../services/api";
 
-import Form from "./commons/Form";
-import Context from "./Context";
-import Input from "./commons/Input";
+import Form from "../commons/Form";
+import Context from "../Context";
+import Input from "../commons/Input";
 
 export default function SignUp() {
   const [disabled, setDisabled] = useState(false);
