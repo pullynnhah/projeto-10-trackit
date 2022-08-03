@@ -10,28 +10,28 @@ function postSignUp(data) {
   return axios.post(`${URI}/auth/sign-up`, data);
 }
 
-function postHabit(data, auth) {
-  return axios.post(`${URI}/habits`, data, {headers: auth});
+function postHabit(data, token) {
+  return axios.post(`${URI}/habits`, data, {headers: {Authorization: `Bearer ${token}`}});
 }
 
-function getHabits(auth) {
-  return axios.get(`${URI}/habits`, {headers: auth});
+function getHabits(token) {
+  return axios.get(`${URI}/habits`, {headers: {Authorization: `Bearer ${token}`}});
 }
 
-function deleteHabits(id, auth) {
-  return axios.delete(`${URI}/habits/${id}`, {headers: auth});
+function deleteHabits(id, token) {
+  return axios.delete(`${URI}/habits/${id}`, {headers: {Authorization: `Bearer ${token}`}});
 }
 
-function postCheckHabit(id, auth) {
-  return axios.post(`${URI}/habits/${id}/check`, {headers: auth});
+function postCheckHabit(id, token) {
+  return axios.post(`${URI}/habits/${id}/check`, {headers: {Authorization: `Bearer ${token}`}});
 }
 
-function postUncheckHabit(id, auth) {
-  return axios.post(`${URI}/habits/${id}/uncheck`, {headers: auth});
+function postUncheckHabit(id, token) {
+  return axios.post(`${URI}/habits/${id}/uncheck`, {headers: {Authorization: `Bearer ${token}`}});
 }
 
-function getHistory(auth) {
-  return axios.get(`${URI}/habits/history/daily`, {headers: auth});
+function getHistory(token) {
+  return axios.get(`${URI}/habits/history/daily`, {headers: {Authorization: `Bearer ${token}`}});
 }
 
 export {

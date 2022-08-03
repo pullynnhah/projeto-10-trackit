@@ -2,10 +2,11 @@ import styled from "styled-components";
 import {useContext, useState} from "react";
 import Context from "../Context";
 import Input from "../commons/Input";
-import {postHabit} from "../../services/api";
+import {getHabits, postHabit} from "../../services/api";
 import {ThreeDots} from "react-loader-spinner";
+import DayBtn from "../commons/DayBtn";
 
-export default function HabitForm({habit, setHabit, days, setDays, setShowForm}) {
+export default function HabitForm({habit, setHabit, setHabits, days, setDays, setShowForm}) {
   const [disabled, setDisabled] = useState(false);
   const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
   const {theme} = useContext(Context);
@@ -30,11 +31,7 @@ export default function HabitForm({habit, setHabit, days, setDays, setShowForm})
 
   function save(e) {
     e.preventDefault();
-    console.log({name: habit, days});
-    const promise = postHabit(
-      {name: habit, days: [...days]},
-      {Authorization: `Bearer ${login.token}`}
-    );
+    const promise = postHabit({name: habit, days: [...days]}, login.token);
     promise.catch(error => {
       alert("Erro ao criar hábito");
       setDisabled(false);
@@ -44,6 +41,8 @@ export default function HabitForm({habit, setHabit, days, setDays, setShowForm})
       setHabit("");
       setDays(new Set());
       setShowForm(false);
+      const prom = getHabits(login.token);
+      prom.then(response => setHabits(response.data));
     });
 
     setDisabled(true);
@@ -65,7 +64,6 @@ export default function HabitForm({habit, setHabit, days, setDays, setShowForm})
           <DayBtn
             disabled={disabled}
             key={index}
-            className="weekday-btn"
             theme={theme}
             check={days.has(index)}
             onClick={e => click(e, index)}>
@@ -87,7 +85,7 @@ export default function HabitForm({habit, setHabit, days, setDays, setShowForm})
 
 const FormWrapper = styled.form`
   height: 180px;
-  margin: 20px 0 29px;
+  margin: 20px 0 0;
   background: ${props => props.theme.white};
 
   display: flex;
@@ -141,19 +139,4 @@ const FormWrapper = styled.form`
       opacity: 0.7;
     }
   }
-`;
-
-const DayBtn = styled.button`
-  width: 30px;
-  height: 30px;
-  font-size: 20px;
-  line-height: 25px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  border: 1px solid ${props => (props.check ? props.theme.gray : props.theme.borderGray)};
-  color: ${props => (props.check ? props.theme.white : props.theme.gray)};
-  background: ${props => (props.check ? props.theme.gray : props.theme.white)};
 `;
