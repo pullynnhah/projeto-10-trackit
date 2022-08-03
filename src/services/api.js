@@ -22,12 +22,20 @@ function deleteHabits(id, token) {
   return axios.delete(`${URI}/habits/${id}`, {headers: {Authorization: `Bearer ${token}`}});
 }
 
+function getTodayHabits(token) {
+  return axios.get(`${URI}/habits/today`, {headers: {Authorization: `Bearer ${token}`}});
+}
+
 function postCheckHabit(id, token) {
-  return axios.post(`${URI}/habits/${id}/check`, {headers: {Authorization: `Bearer ${token}`}});
+  return axios.post(`${URI}/habits/${id}/check`, {}, {headers: {Authorization: `Bearer ${token}`}});
 }
 
 function postUncheckHabit(id, token) {
-  return axios.post(`${URI}/habits/${id}/uncheck`, {headers: {Authorization: `Bearer ${token}`}});
+  return axios.post(
+    `${URI}/habits/${id}/uncheck`,
+    {},
+    {headers: {Authorization: `Bearer ${token}`}}
+  );
 }
 
 function getHistory(token) {
@@ -40,6 +48,7 @@ export {
   postHabit,
   getHabits,
   deleteHabits,
+  getTodayHabits,
   postCheckHabit,
   postUncheckHabit,
   getHistory,

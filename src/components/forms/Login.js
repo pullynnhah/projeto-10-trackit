@@ -24,7 +24,7 @@ export default function Login() {
 
     promise.then(response => {
       setLogin(response.data);
-      navigate("/habitos"); // TODO: change to /hoje
+      navigate("/hoje");
     });
 
     setDisabled(true);

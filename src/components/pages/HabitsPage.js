@@ -5,8 +5,8 @@ import GlobalContext from "../contexts/GlobalContext";
 import HabitForm from "../forms/HabitForm";
 import Habits from "../Habits";
 import {getHabits} from "../../services/api";
-import {Hearts} from "react-loader-spinner";
 import HabitsContext from "../contexts/HabitsContext";
+import Loading from "../commons/Loading";
 
 export default function HabitsPage() {
   const [showForm, setShowForm] = useState(false); // TODO: set to false
@@ -14,23 +14,15 @@ export default function HabitsPage() {
   const [days, setDays] = useState(new Set());
   const [habits, setHabits] = useState(null);
 
-  const {login} = useContext(GlobalContext);
+  const {login, theme} = useContext(GlobalContext);
 
   useEffect(() => {
     const promise = getHabits(login.token);
-    promise.catch(error => console.log(error));
     promise.then(response => setHabits(response.data));
   }, [login.token]);
-  const {theme} = useContext(GlobalContext);
 
   if (habits === null) {
-    return (
-      <Page>
-        <LoadingWrapper>
-          <Hearts height="180" width="180" color="#52b6ff" />
-        </LoadingWrapper>
-      </Page>
-    );
+    return <Loading />;
   }
 
   return (
@@ -74,12 +66,4 @@ const Title = styled.div`
     color: ${props => props.theme.white};
     background: ${props => props.theme.blue};
   }
-`;
-
-const LoadingWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
