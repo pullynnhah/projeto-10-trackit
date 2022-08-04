@@ -8,9 +8,10 @@ import SignUpPage from "./pages/SignUpPage";
 import HabitsPage from "./pages/HabitsPage";
 import TodayPage from "./pages/TodayPage";
 import HistoryPage from "./pages/HistoryPage";
+import {getUserData} from "../services/storage";
 
 export default function App() {
-  const [login, setLogin] = useState(null);
+  const [login, setLogin] = useState(getUserData());
   const [percentage, setPercentage] = useState(0);
   const theme = {
     darkBlue: "#126ba5",
