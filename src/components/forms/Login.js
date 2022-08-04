@@ -6,6 +6,7 @@ import Form from "../commons/Form";
 import GlobalContext from "../contexts/GlobalContext";
 import {postLogin} from "../../services/api";
 import Input from "../commons/Input";
+import {getUserData, setUserData} from "../../services/storage";
 
 export default function Login() {
   const [disabled, setDisabled] = useState(false);
@@ -24,6 +25,7 @@ export default function Login() {
 
     promise.then(response => {
       setLogin(response.data);
+      setUserData(response.data);
       navigate("/hoje");
     });
 
@@ -42,6 +44,13 @@ export default function Login() {
       placeholder: "senha",
     },
   ];
+
+  const user = getUserData();
+  console.log(user);
+  if (user) {
+    setLogin(user);
+    navigate("/hoje");
+  }
 
   return (
     <Form theme={theme}>

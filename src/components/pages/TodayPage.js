@@ -20,25 +20,24 @@ export default function TodayPage() {
     weekdays: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
   });
 
-  function calcPercentage() {
-    const sizeHabits = habits.length;
-    if (sizeHabits === 0) {
-      return 0;
-    }
-    const sizeCompleteHabits = habits.filter(habit => habit.done).length;
-    setPercentage(Math.round((sizeCompleteHabits * 100) / sizeHabits));
-  }
-
   useEffect(() => {
     const promise = getTodayHabits(login.token);
-    promise.then(response => setHabits(response.data));
-  }, [login.token]);
+    promise.then(response => {
+      setHabits(response.data);
+      const sizeHabits = habits?.length;
+      if (!sizeHabits) {
+        setPercentage(0);
+      } else {
+        const sizeCompleteHabits = habits.filter(habit => habit.done).length;
+        setPercentage(Math.round((sizeCompleteHabits * 100) / sizeHabits));
+      }
+    });
+  }, [login.token, habits, setPercentage]);
 
   if (habits === null) {
     return <Loading />;
   }
 
-  calcPercentage();
   return (
     <Page>
       <Title theme={theme} perc={percentage === 0}>

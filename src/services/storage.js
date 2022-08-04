@@ -3,7 +3,7 @@ function getUserData() {
 }
 
 function setUserData(data) {
-  return localStorage.getItem(JSON.stringify("user-data"));
+  return localStorage.setItem("user-data", JSON.stringify(data));
 }
 
 export {getUserData, setUserData};
