@@ -9,12 +9,11 @@ import updateLocale from "dayjs/plugin/updateLocale";
 import styled from "styled-components";
 import TodayHabit from "../TodayHabit";
 import {getTodayHabits} from "../../services/api";
-import {useNavigate} from "react-router-dom";
 
 export default function TodayPage() {
   const [habits, setHabits] = useState(null);
   const {login, percentage, setPercentage, theme} = useContext(GlobalContext);
-  const navigate = useNavigate();
+
   dayjs.locale("pt-br");
   dayjs.extend(updateLocale);
   dayjs.updateLocale("pt-br", {
@@ -22,21 +21,17 @@ export default function TodayPage() {
   });
 
   useEffect(() => {
-    if (login) {
-      const promise = getTodayHabits(login.token);
-      promise.then(response => {
-        setHabits(response.data);
-        const sizeHabits = habits?.length;
-        if (!sizeHabits) {
-          setPercentage(0);
-        } else {
-          const sizeCompleteHabits = habits.filter(habit => habit.done).length;
-          setPercentage(Math.round((sizeCompleteHabits * 100) / sizeHabits));
-        }
-      });
-    } else {
-      navigate("/");
-    }
+    const promise = getTodayHabits(login.token);
+    promise.then(response => {
+      setHabits(response.data);
+      const sizeHabits = habits?.length;
+      if (!sizeHabits) {
+        setPercentage(0);
+      } else {
+        const sizeCompleteHabits = habits.filter(habit => habit.done).length;
+        setPercentage(Math.round((sizeCompleteHabits * 100) / sizeHabits));
+      }
+    });
   }, [login, habits, setPercentage]);
 
   if (habits === null) {
