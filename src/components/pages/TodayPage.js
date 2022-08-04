@@ -74,6 +74,9 @@ export default function TodayPage() {
 
   function calcPercentage() {
     const sizeHabits = habits.length;
+    if (sizeHabits === 0) {
+      return 0;
+    }
     const sizeCompleteHabits = habits.filter(habit => habit.done).length;
     setPercentage(Math.round((sizeCompleteHabits * 100) / sizeHabits));
   }
