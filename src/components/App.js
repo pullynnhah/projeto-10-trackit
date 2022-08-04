@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
 import HabitsPage from "./pages/HabitsPage";
 import TodayPage from "./pages/TodayPage";
+import HistoryPage from "./pages/HistoryPage";
 
 export default function App() {
   const [login, setLogin] = useState(null);
@@ -24,6 +25,9 @@ export default function App() {
     iconBorderGray: "#e7e7e7",
     white: "#fff",
     green: "#8FC549",
+
+    calendarGreen: "#57A54E",
+    calendarRed: "#EA5766",
   };
 
   return (
@@ -36,6 +40,7 @@ export default function App() {
             <Route path="/cadastro" element={<SignUpPage />} />
             <Route path="hoje" element={<TodayPage />} />
             <Route path="habitos" element={<HabitsPage />} />
+            <Route path="historico" element={<HistoryPage />} />
           </Routes>
         </BrowserRouter>
       </GlobalContext.Provider>
