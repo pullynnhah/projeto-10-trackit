@@ -16,7 +16,7 @@ export default function Page({children}) {
 }
 
 const Container = styled.main`
-  height: calc(100vh - 140px);
+  min-height: calc(100vh - 140px);
   margin: 70px 0;
   padding: 0 18px;
   background: ${props => props.theme.backgroundGray};

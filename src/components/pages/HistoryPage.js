@@ -8,35 +8,30 @@ import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
 import Page from "../commons/Page";
 import styled from "styled-components";
-
-function Day({day, date, history}) {
-  const {theme} = useContext(GlobalContext);
-
-  for (const historyItem of history) {
-    if (date === historyItem.day && date !== dayjs().format("DD/MM/YYYY")) {
-      const isIncomplete = historyItem.habits.find(habit => !habit.done);
-      return (
-        <HistoryWrapper done={!isIncomplete} theme={theme} className="history-day">
-          {day}
-        </HistoryWrapper>
-      );
-    }
-  }
-
-  return <DayWrapper>{day}</DayWrapper>;
-}
+import Day from "../Day";
+import HistoryHabits from "../HistoryHabits";
+import {useNavigate} from "react-router-dom";
 
 export default function HistoryPage() {
   dayjs.extend(customParseFormat);
   const [history, setHistory] = useState(null);
+  const [dayHabits, setDayHabits] = useState(null);
+  const [dateState, setDateState] = useState(null);
   const {login, theme} = useContext(GlobalContext);
+
+  const navigate = useNavigate();
+
+  function changeDate(e) {
+    if (dayjs().format("DD/MM/YYYY") === dayjs(e).format("DD/MM/YYYY")) {
+      navigate("/hoje");
+    }
+    setDateState(dayjs(e).format("dddd, DD/MM"));
+    setDayHabits(history.find(item => item.day === dayjs(e).format("DD/MM/YYYY"))?.habits);
+  }
 
   useEffect(() => {
     const promise = getHistory(login.token);
-    promise.then(response => {
-      setHistory(response.data);
-      console.log(response.data);
-    });
+    promise.then(response => setHistory(response.data));
   }, [login.token]);
 
   if (history === null) {
@@ -51,7 +46,7 @@ export default function HistoryPage() {
       <CalendarWrapper>
         <Calendar
           locale="pt-BR"
-          className="calendar"
+          onClickDay={changeDate}
           formatDay={(locale, date) => (
             <Day
               day={dayjs(date).format("DD")}
@@ -61,18 +56,10 @@ export default function HistoryPage() {
           )}
         />
       </CalendarWrapper>
+      {dateState ? <HistoryHabits habits={dayHabits} displayDate={dateState} /> : ""}
     </Page>
   );
 }
-
-const DayWrapper = styled.div`
-  padding: 12px 0;
-`;
-
-const HistoryWrapper = styled(DayWrapper)`
-  background: ${props => (props.done ? props.theme.calendarGreen : props.theme.calendarRed)};
-  border-radius: 50%;
-`;
 
 const Title = styled.div`
   padding: 28px 0 11px;
@@ -85,14 +72,17 @@ const Title = styled.div`
 `;
 
 const CalendarWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 350px;
 
-  .calendar {
+  .react-calendar {
     width: 100%;
-    padding: 10px;
     border: none;
     border-radius: 10px;
+  }
+
+  .react-calendar__navigation button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
