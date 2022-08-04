@@ -31,7 +31,6 @@ export default function TodayPage() {
 
   useEffect(() => {
     const promise = getTodayHabits(login.token);
-    promise.catch(error => console.log(error));
     promise.then(response => setHabits(response.data));
   }, [login.token]);
 
