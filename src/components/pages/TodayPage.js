@@ -37,7 +37,7 @@ export default function TodayPage() {
     } else {
       navigate("/");
     }
-  }, [login.token, habits, setPercentage]);
+  }, [login, habits, setPercentage]);
 
   if (habits === null) {
     return <Loading />;
