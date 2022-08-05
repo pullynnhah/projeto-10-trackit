@@ -1,4 +1,4 @@
-import {useState, useContext} from "react";
+import {useState, useContext, useEffect} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {ThreeDots} from "react-loader-spinner";
 
@@ -45,12 +45,11 @@ export default function Login() {
     },
   ];
 
-  const user = getUserData();
-  console.log(user);
-  if (user) {
+  useEffect(() => {
+    const user = getUserData();
     setLogin(user);
     navigate("/hoje");
-  }
+  }, []);
 
   return (
     <Form theme={theme}>
