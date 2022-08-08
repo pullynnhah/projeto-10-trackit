@@ -6,13 +6,13 @@ import Form from "../commons/Form";
 import GlobalContext from "../contexts/GlobalContext";
 import {postLogin} from "../../services/api";
 import Input from "../commons/Input";
-import {getUserData, setUserData} from "../../services/storage";
+import {setUserData} from "../../services/storage";
 
 export default function Login() {
   const [disabled, setDisabled] = useState(false);
   const [form, setForm] = useState({email: "", password: ""});
 
-  const {setLogin, theme} = useContext(GlobalContext);
+  const {login, setLogin, theme} = useContext(GlobalContext);
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -46,9 +46,9 @@ export default function Login() {
   ];
 
   useEffect(() => {
-    const user = getUserData();
-    setLogin(user);
-    navigate("/hoje");
+    if (login !== null) {
+      navigate("/hoje");
+    }
   }, []);
 
   return (
